@@ -41,7 +41,7 @@ def generate_descriptor_info(dataframe, cluster):
     print(descriptor_percs)
 
 
-# this function generates a wordcloud given a
+# this function generates a wordcloud given a dataframe with wine descriptor info
 def generate_wordcloud(wines_in_cluster, level, fig, category=None, color=None, title=None):
 
     mask_bottle = np.array(PIL.Image.open("wine_bottle_icon.jpg"))
@@ -85,11 +85,10 @@ def generate_wordcloud(wines_in_cluster, level, fig, category=None, color=None, 
         plt.gca().spines[pos].set_visible(False)
 
 
+# this function generates a map with circles based on the frequency with which various observations appear
 def gen_map(wines_in_cluster, fig, color):
     clustered_wines_for_mapping = wines_in_cluster.groupby(['Country', 'Latitude', 'Longitude'])[
         'Name'].count().reset_index()
-
-    my_dpi = 300
 
     m = Basemap(llcrnrlon=-180, llcrnrlat=-65, urcrnrlon=180, urcrnrlat=80)
     m.drawmapboundary(fill_color='white', linewidth=0)
@@ -102,9 +101,8 @@ def gen_map(wines_in_cluster, fig, color):
               s=clustered_wines_for_mapping['Name'] * 5, alpha=0.8, c=color
               )
 
-#     plt.text(x=-60, y=75, s='Frequency by Geography', fontsize=16, backgroundcolor='white')
 
-
+# this function generates a bar chart
 def generate_bar_chart(wines_in_cluster, fig, variable, x_label, number_of_bars, color):
     bar_values = wines_in_cluster[variable].value_counts(normalize=True)
 
@@ -133,6 +131,7 @@ def generate_bar_chart(wines_in_cluster, fig, variable, x_label, number_of_bars,
         plt.gca().spines[pos].set_visible(False)
 
 
+# this function generates a histogram
 def generate_histogram(wines_in_cluster, fig, variable, min_value, max_value, title, color, binsize):
     wines_in_cluster_refined = wines_in_cluster.copy()
     wines_in_cluster_refined.dropna(subset=[variable], axis=0, inplace=True)
@@ -173,6 +172,7 @@ def generate_histogram(wines_in_cluster, fig, variable, min_value, max_value, ti
         plt.gca().spines[pos].set_visible(False)
 
 
+# this function generates information with the number of wines in a cluster and the % of total this makes up
 def generate_cluster_info(wines_in_cluster, all_wines, fig):
     cluster_size = len(wines_in_cluster.index)
     total_nr_wines = len(all_wines.index)
@@ -193,6 +193,7 @@ def generate_cluster_info(wines_in_cluster, all_wines, fig):
     plt.axis('off')
 
 
+# this function produces a visual with bar charts, histograms, wordclouds and maps summarizing the characteristics of a cluster
 def generate_cluster_visual(filtered_dataframe, full_dataframe, fig, title):
 
     subplot_grid = (20, 3)
@@ -230,4 +231,3 @@ def generate_cluster_visual(filtered_dataframe, full_dataframe, fig, title):
     plt.subplots_adjust(wspace=0.08, hspace=5)
     plt.suptitle(title, fontsize=30)
     plt.show()
-
