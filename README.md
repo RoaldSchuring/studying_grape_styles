@@ -17,6 +17,11 @@ The following file contains the full mapping of preprocessed wine descriptors to
 
 - wine_term_mapping.csv
 
+Finally, there are a couple of other files that fill specific functions:
+
+- wine_bottle_icon.jpg: this image is used as a mask to produce word clouds shaped like wine bottles
+- stopwords_extended.txt: this is a long list of stopwords used to normalize the text in the wine reviews
+
 ### Technologies
 
 - Python
