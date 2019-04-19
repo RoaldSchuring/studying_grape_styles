@@ -42,7 +42,7 @@ def generate_descriptor_info(dataframe, cluster):
 
 
 # this function generates a wordcloud given a dataframe with wine descriptor info
-def generate_wordcloud(wines_in_cluster, level, fig, category=None, color=None, title=None):
+def generate_wordcloud(wines_in_cluster, level, category=None, color=None, title=None):
 
     mask_bottle = np.array(PIL.Image.open("wine_bottle_icon.jpg"))
 
