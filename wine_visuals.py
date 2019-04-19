@@ -12,7 +12,7 @@ os.environ['PROJ_LIB'] = r'C:\Users\roald\Anaconda3\pkgs\proj4-5.2.0-ha925a31_1\
 from mpl_toolkits.basemap import Basemap
 
 
-# this function produces
+# this function prints the most frequently appearing top-level descriptors for a set of wines
 def generate_descriptor_info(dataframe, cluster):
     all_descriptors = pd.read_csv('chardonnay_descriptors.csv')
     all_descriptors.head()
@@ -27,7 +27,6 @@ def generate_descriptor_info(dataframe, cluster):
                           .sort_index()
                           ).reset_index()
 
-    # print(unpacked_cluster_x.head(10))
     descriptor_mapping = unpacked_cluster_x.merge(all_descriptors, left_on='descriptor', right_on='descriptor_level_3',
                                                   how='left')
     descriptor_mapping.drop_duplicates(subset=['index', 'descriptor'], inplace=True)
@@ -42,6 +41,7 @@ def generate_descriptor_info(dataframe, cluster):
     print(descriptor_percs)
 
 
+# this function generates a wordcloud given a
 def generate_wordcloud(wines_in_cluster, level, fig, category=None, color=None, title=None):
 
     mask_bottle = np.array(PIL.Image.open("wine_bottle_icon.jpg"))
