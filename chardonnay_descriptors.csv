@@ -6,7 +6,7 @@ pear,fruit,tree fruit,pear
 toast,oak,toast,toast
 pineappl,fruit,tropical fruit,pineapple
 crisp,acid,high acid,crisp
-peach,fruit,tree fruit,peach
+peach,fruit,stone fruit,peach
 miner,inorganic,minerality,minerality
 vanilla,oak,vanilla,vanilla
 lemon,fruit,citrus fruit,lemon
@@ -22,7 +22,7 @@ soft,tannin,low tannin,soft
 tropic fruit,fruit,tropical fruit,tropical fruit
 fruiti,fruit,fruit,fruit
 bright,acid,high acid,bright
-apricot,fruit,tree fruit,apricot
+apricot,fruit,stone fruit,apricot
 honey,noble rot,beeswax,honey
 wood,oak,wood,wood
 yellow,visual,yellow,yellow
@@ -78,14 +78,14 @@ blossom,flower,blossom,blossom
 golden,visual,gold,gold
 flavor pineappl,fruit,tropical fruit,pineapple
 smoke,oak,smoke,smoke
-peach flavor,fruit,tree fruit,peach
+peach flavor,fruit,stone fruit,peach
 cinnamon,spice,cinnamon,cinnamon
 creami textur,microbial,cream,cream
 jam,fruit,jam,jam
 custard,oak,custard,custard
 heavi,body,full-bodied,heavy
 juic,fruit,juicy,juicy
-stone fruit,fruit,tree fruit,stone fruit
+stone fruit,fruit,stone fruit,stone fruit
 flower,flower,floral,floral
 herb,herb,herb,herb
 citrus fruit,fruit,citrus fruit,citrus
@@ -137,13 +137,13 @@ asian pear,fruit,tree fruit,asian pear
 lemon flavor,fruit,citrus fruit,lemon
 corn,oak,corn,corn
 lemon zest,fruit,citrus fruit,lemon zest
-ripe peach,fruit,tree fruit,ripe peach
+ripe peach,fruit,stone fruit,ripe peach
 oili,inorganic,oily,oily
 pithi,fruit,citrus fruit,pith
 balanc acid,acid,medium acid,medium acid
-apricot flavor,fruit,tree fruit,apricot
+apricot flavor,fruit,stone fruit,apricot
 resini,herb,resin,resin
-flavor peach,fruit,tree fruit,peach
+flavor peach,fruit,stone fruit,peach
 raci,acid,high acid,racy
 ripe pineappl,fruit,tropical fruit,ripe pineapple
 coconut,oak,coconut,coconut
@@ -158,7 +158,7 @@ auster,body,austere,austere
 fat,body,fat,fat
 bread,microbial,bread,bread
 rich textur,body,rich texture,rich texture
-orang,fruit,tree fruit,orange
+orang,fruit,citrus fruit,orange
 restrain,style,restrained,restrained
 brini,salinity,brine,brine
 honeydew,fruit,tropical fruit,honeydew
@@ -170,7 +170,7 @@ buttercream,oak,buttercream,buttercream
 ginger,spice,ginger,ginger
 flavor light,body,light-bodied,light-bodied
 sugari,sweetness,sugar,sugar
-peach fruit,fruit,tree fruit,peach
+peach fruit,fruit,stone fruit,peach
 lemon curd,fruit,citrus fruit,lemon curd
 fig,fruit,fig,fig
 quinc,herb,quince,quince
@@ -224,7 +224,7 @@ sparkler,style,sparkling,sparkling
 vanilla custard,oak,vanilla custard,vanilla custard
 lemongrass,herb,lemongrass,lemongrass
 tart,acid,high acid,tart
-ripe apricot,fruit,tree fruit,ripe apricot
+ripe apricot,fruit,stone fruit,ripe apricot
 meloni,fruit,melon,melon
 mellow,body,mellow,mellow
 finish rich,body,rich finish,rich finish
@@ -233,7 +233,7 @@ soft textur,tannin,low tannin,soft texture
 bake pear,fruit,tree fruit,baked pear
 crisp finish,acid,acid finish,crisp finish
 hot,alcohol,high alcohol,hot
-stonefruit,fruit,tree fruit,stone fruit
+stonefruit,fruit,stone fruit,stone fruit
 ripe fruiti,fruit,ripe fruit,ripe fruit
 fruit ripe,fruit,ripe fruit,ripe fruit
 plush,tannin,plush,plush
@@ -315,14 +315,14 @@ rough,tannin,high tannin,rough
 bland,style,bland,bland
 cut acid,acid,high acid,cutting acid
 mouthwat acid,acid,mouthwatering acid,mouthwatering acid
-apricot jam,fruit,tree fruit,apricot jam
+apricot jam,fruit,stone fruit,apricot jam
 lyche,fruit,tropical fruit,lychee
 fresh finish,acid,fresh finish,fresh finish
 kumquat,fruit,citrus fruit,kumquat
 barrel flavor,oak,barrel flavor,barrel flavor
 fennel,herb,fennel,fennel
 dull,style,dull,dull
-peachi,fruit,tree fruit,peach
+peachi,fruit,stone fruit,peach
 mineraldriven,inorganic,mineral,mineral
 zingi,acid,high acid,zingy
 lemon meringu,fruit,lemon meringue,lemon meringue
@@ -373,11 +373,11 @@ cake,microbial,cake,cake
 stalki,herb,stalky,stalky
 acid tangi,acid,tangy acid,tangy acid
 custardi,oak,custard,custard
-peach pit,fruit,tree fruit,peach pit
+peach pit,fruit,stone fruit,peach pit
 cooki,oak,cookie,cookie
 metal,inorganic,metal,metal
 honeycomb,noble rot,honeycomb,honeycomb
-yellow peach,fruit,tree fruit,yellow peach
+yellow peach,fruit,stone fruit,yellow peach
 pungent,style,pungent,pungent
 grapefruit pith,fruit,citrus fruit,grapefruit pith
 crisp aftertast,acid,crisp finish,crisp finish
@@ -387,7 +387,7 @@ toast cinnamon,oak,toasted cinnamon,toasted cinnamon
 bonedri,sweetness,bone dry,bone dry
 residu sugar,sweetness,sugar residue,sugar residue
 brine,salinity,brine,brine
-grill peach,fruit,tree fruit,grilled peach
+grill peach,fruit,stone fruit,grilled peach
 citrus finish,fruit,citrus finish,citrus finish
 rich acid,acid,rich acid,rich acid
 poach pear,fruit,tree fruit,poached pear
@@ -486,7 +486,7 @@ acid sweet,acid,sweet acid,sweet acid
 oakdriven,oak,oak-driven,oak-driven
 tropic citrus,fruit,citrus fruit,tropical citrus
 woodspic,oak,wood spice,wood spice
-dri apricot,fruit,tree fruit,dried apricot
+dri apricot,fruit,stone fruit,dried apricot
 salt caramel,oak,salty caramel,salty caramel
 chiffon,fruit,citrus fruit,chiffon
 botryti,noble rot,botrytis,botrytis

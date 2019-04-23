@@ -33,7 +33,7 @@ def generate_descriptor_info(dataframe, cluster):
     descriptor_mapping.set_index('index', inplace=True)
     descriptor_mapping = descriptor_mapping[['descriptor', 'descriptor_level_1']]
 
-    descriptor_class_counts = Counter(descriptor_mapping['descriptor_level_1']).most_common(7)
+    descriptor_class_counts = Counter(descriptor_mapping['descriptor_level_1']).most_common(12)
     descriptor_percs = [(i[0], i[1] / len(descriptor_mapping)) for i in descriptor_class_counts]
 
     descriptor_percs.sort(key=itemgetter(1), reverse=True)
@@ -86,7 +86,7 @@ def generate_wordcloud(wines_in_cluster, level, category=None, color=None, title
 
 
 # this function generates a map with circles based on the frequency with which various observations appear
-def gen_map(wines_in_cluster, fig, color):
+def gen_map(wines_in_cluster, color):
     clustered_wines_for_mapping = wines_in_cluster.groupby(['Country', 'Latitude', 'Longitude'])[
         'Name'].count().reset_index()
 
@@ -103,7 +103,7 @@ def gen_map(wines_in_cluster, fig, color):
 
 
 # this function generates a bar chart
-def generate_bar_chart(wines_in_cluster, fig, variable, x_label, number_of_bars, color):
+def generate_bar_chart(wines_in_cluster, variable, x_label, number_of_bars, color):
     bar_values = wines_in_cluster[variable].value_counts(normalize=True)
 
     if bar_values.index.dtype == 'float64':
@@ -113,7 +113,7 @@ def generate_bar_chart(wines_in_cluster, fig, variable, x_label, number_of_bars,
         tick_labels_int = [int(n) for n in list(bar_values.index)]
         plt.bar(np.arange(number_of_bars), bar_values, width=0.5, tick_label=tick_labels_int, color=color)
         average_var_value = format(np.mean(wines_in_cluster[variable]), '.2f')
-        plt.text(s='Average: ' + average_var_value, x=number_of_bars * 0.24, y=1.28 * max(bar_values), fontsize=12)
+        plt.text(s='Average: ' + average_var_value, x=-0.5, y=1.28 * max(bar_values), fontsize=12)
     else:
         bar_values = bar_values.head(number_of_bars)
         plt.bar(np.arange(number_of_bars), bar_values, width=0.5, tick_label=bar_values.index, color=color)
@@ -125,14 +125,14 @@ def generate_bar_chart(wines_in_cluster, fig, variable, x_label, number_of_bars,
     plt.ylim(bottom=0, top=2 * max(bar_values))
     plt.yticks([])
 
-    plt.text(x=number_of_bars * 0.22, y=1.5 * max(bar_values), s=x_label, fontsize=16)
+    plt.text(x=-0.5, y=1.5 * max(bar_values), s=x_label, fontsize=16)
 
     for pos in ['right', 'top', 'left']:
         plt.gca().spines[pos].set_visible(False)
 
 
 # this function generates a histogram
-def generate_histogram(wines_in_cluster, fig, variable, min_value, max_value, title, color, binsize):
+def generate_histogram(wines_in_cluster, variable, min_value, max_value, title, color, binsize):
     wines_in_cluster_refined = wines_in_cluster.copy()
     wines_in_cluster_refined.dropna(subset=[variable], axis=0, inplace=True)
     (wines_in_cluster_refined[variable].replace('[\$,)]', '', regex=True, inplace=True))
@@ -173,7 +173,7 @@ def generate_histogram(wines_in_cluster, fig, variable, min_value, max_value, ti
 
 
 # this function generates information with the number of wines in a cluster and the % of total this makes up
-def generate_cluster_info(wines_in_cluster, all_wines, fig):
+def generate_cluster_info(wines_in_cluster, all_wines):
     cluster_size = len(wines_in_cluster.index)
     total_nr_wines = len(all_wines.index)
 
@@ -194,39 +194,39 @@ def generate_cluster_info(wines_in_cluster, all_wines, fig):
 
 
 # this function produces a visual with bar charts, histograms, wordclouds and maps summarizing the characteristics of a cluster
-def generate_cluster_visual(filtered_dataframe, full_dataframe, fig, title):
+def generate_cluster_visual(filtered_dataframe, full_dataframe, title):
 
     subplot_grid = (20, 3)
 
     plt.subplot2grid(subplot_grid, (0, 0), rowspan=4)
-    generate_cluster_info(filtered_dataframe, full_dataframe, fig)
+    generate_cluster_info(filtered_dataframe, full_dataframe)
 
     plt.subplot2grid(subplot_grid, (4, 0), rowspan=4)
-    generate_wordcloud(wines_in_cluster=filtered_dataframe, level='descriptor_level_3', category='fruit', fig=fig, color='#223344')
+    generate_wordcloud(wines_in_cluster=filtered_dataframe, level='descriptor_level_3', category='fruit', color='#223344')
 
     plt.subplot2grid(subplot_grid, (8, 0), rowspan=4)
-    generate_wordcloud(wines_in_cluster=filtered_dataframe, level='descriptor_level_3', category='oak', fig=fig, color='#223344')
+    generate_wordcloud(wines_in_cluster=filtered_dataframe, level='descriptor_level_3', category='oak', color='#916e31')
 
     plt.subplot2grid(subplot_grid, (12, 0), rowspan=4)
-    generate_wordcloud(wines_in_cluster=filtered_dataframe, level='descriptor_level_3', category='acid', fig=fig, color='#223344')
+    generate_wordcloud(wines_in_cluster=filtered_dataframe, level='descriptor_level_3', category='acid', color='#c88c27')
 
     plt.subplot2grid(subplot_grid, (16, 0), rowspan=4)
-    generate_wordcloud(wines_in_cluster=filtered_dataframe, level='descriptor_level_3', category='body', fig=fig, color='#223344')
+    generate_wordcloud(wines_in_cluster=filtered_dataframe, level='descriptor_level_3', category='body', color='#581845')
 
     plt.subplot2grid(subplot_grid, (0, 1), colspan=2, rowspan=10)
-    gen_map(filtered_dataframe, fig, '#223344')
+    gen_map(filtered_dataframe, '#223344')
 
     plt.subplot2grid(subplot_grid, (10, 1), rowspan=5)
-    generate_bar_chart(filtered_dataframe, fig, 'Country', 'Top 5 Countries', 5, '#223344')
+    generate_bar_chart(filtered_dataframe, 'Country', 'Top 5 Countries', 5, '#223344')
 
     plt.subplot2grid(subplot_grid, (10, 2), rowspan=5)
-    generate_bar_chart(filtered_dataframe, fig, 'Province', 'Top 5 Provinces', 5, '#223344')
+    generate_bar_chart(filtered_dataframe, 'Province', 'Top 5 Provinces', 5, '#223344')
 
     plt.subplot2grid(subplot_grid, (15, 1), rowspan=5)
-    generate_bar_chart(filtered_dataframe, fig, 'Age', 'Age (years)', 5, '#c88c27')
+    generate_bar_chart(filtered_dataframe, 'Age', 'Age (years)', 5, '#c88c27')
 
     plt.subplot2grid(subplot_grid, (15, 2), rowspan=5)
-    generate_histogram(filtered_dataframe, fig=fig, variable='Price', min_value=0, max_value=100, title='Price (dollars)', color='#916e31', binsize=10)
+    generate_histogram(filtered_dataframe, variable='Price', min_value=0, max_value=100, title='Price (dollars)', color='#916e31', binsize=10)
 
     plt.subplots_adjust(wspace=0.08, hspace=5)
     plt.suptitle(title, fontsize=30)
